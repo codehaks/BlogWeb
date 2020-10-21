@@ -2,3 +2,23 @@
 @model MyBlog.Pages.Blogs.IndexModel
 @{
 }
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Desc</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var blog in Model.Blogs)
+        {
+        <tr>
+            <td>@blog.Id</td>
+            <td>@blog.Name</td>
+            <td>@blog.Description</td>
+        </tr>
+        }
+    </tbody>
+</table>
