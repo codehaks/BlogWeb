@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MyBlog.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,7 @@ namespace MyBlog.Data
             optionsBuilder.UseSqlite("Data source=myblog.sqlite");
             base.OnConfiguring(optionsBuilder);
         }
+
+        public DbSet<Blog> Blogs { get; set; }
     }
 }
