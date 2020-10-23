@@ -9,6 +9,7 @@
             <th>Id</th>
             <th>Name</th>
             <th>Desc</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -18,6 +19,9 @@
             <td>@blog.Id</td>
             <td>@blog.Name</td>
             <td>@blog.Description</td>
+            <td>
+                <a asp-page="Edit" asp-route-id="@blog.Id" class="btn btn-primary">Edit</a>
+            </td>
         </tr>
         }
     </tbody>
