@@ -1,0 +1,15 @@
+﻿@page
+@model MyBlog.Pages.Blogs.DeleteModel
+@{
+}
+<h1>Delete this item</h1>
+
+<form method="post">
+    <input asp-for="Blog.Id" />
+
+    <input asp-for="Blog.Name" class="form-control" readonly />
+    <br />
+    <textarea asp-for="Blog.Description" class="form-control" readonly></textarea>
+    <br />
+    <button class="btn btn-danger">Delete</button>
+</form>
