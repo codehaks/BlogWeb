@@ -20,6 +20,7 @@
             <td>@blog.Name</td>
             <td>@blog.Description</td>
             <td>
+                <a asp-page="Details" asp-route-id="@blog.Id" class="btn btn-light">Details</a>
                 <a asp-page="Edit" asp-route-id="@blog.Id" class="btn btn-primary">Edit</a>
                 <a asp-page="Delete" asp-route-id="@blog.Id" class="btn btn-danger">Delete</a>
             </td>
