@@ -11,7 +11,7 @@ namespace MyBlog.Data
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data source=myblog.sqlite");
+            optionsBuilder.UseSqlServer("Data Source=localhost\\sqlexpress;Initial Catalog=MyBlogDb_Dev01;integrated security=true");
             base.OnConfiguring(optionsBuilder);
         }
 
