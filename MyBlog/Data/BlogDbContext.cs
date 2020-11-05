@@ -7,13 +7,10 @@ using System.Threading.Tasks;
 
 namespace MyBlog.Data
 {
-    public class BlogDbContext:DbContext
+    public class BlogDbContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Data Source=localhost\\sqlexpress;Initial Catalog=MyBlogDb_Dev01;integrated security=true");
-            base.OnConfiguring(optionsBuilder);
-        }
+        public BlogDbContext(DbContextOptions<BlogDbContext> options)
+            : base(options) { }
 
         public DbSet<Blog> Blogs { get; set; }
     }
