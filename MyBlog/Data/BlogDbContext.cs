@@ -24,6 +24,7 @@ namespace MyBlog.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new SubConfig());
+            modelBuilder.ApplyConfiguration(new UserConfig());
             base.OnModelCreating(modelBuilder);
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,8 +19,18 @@ namespace MyBlog.Models
 
         public bool IsLocked { get; set; }
 
+        [Column(TypeName = "tinyint")]
         public GenderType Gender { get; set; }
+
         public RoleType Role { get; set; }
+
+        public DateTime BirthDate { get; set; }
+
+        public byte[] Photo { get; set; }
+
+
+        public byte[] PhotoThumb { get; set; }
+
 
     }
 
