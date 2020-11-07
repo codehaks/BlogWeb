@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MyBlog.Data.Configs;
 using MyBlog.Models;
 using System;
 using System.Collections.Generic;
@@ -15,5 +16,14 @@ namespace MyBlog.Data
         public DbSet<Blog> Blogs { get; set; }
 
         public DbSet<Post> Posts { get; set; }
+
+        public DbSet<Sub> Subs { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new SubConfig());
+            base.OnModelCreating(modelBuilder);
+        }
+
     }
 }
