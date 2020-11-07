@@ -37,6 +37,28 @@ namespace MyBlog.Migrations
                     b.ToTable("Blogs");
                 });
 
+            modelBuilder.Entity("MyBlog.Models.Contact", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Full Name");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Contacts");
+                });
+
             modelBuilder.Entity("MyBlog.Models.Post", b =>
                 {
                     b.Property<long>("Id")
@@ -95,7 +117,8 @@ namespace MyBlog.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("Photo")
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("varbinary(max)")
+                        .HasColumnName("Image");
 
                     b.Property<byte[]>("PhotoThumb")
                         .HasColumnType("binary(8000)");
