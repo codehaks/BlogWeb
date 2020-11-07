@@ -19,6 +19,8 @@ namespace MyBlog.Data
 
         public DbSet<Sub> Subs { get; set; }
 
+        public DbSet<User> Users { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new SubConfig());
