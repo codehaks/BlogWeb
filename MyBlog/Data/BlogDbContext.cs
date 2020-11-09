@@ -26,6 +26,8 @@ namespace MyBlog.Data
         {
             modelBuilder.ApplyConfiguration(new SubConfig());
             modelBuilder.ApplyConfiguration(new UserConfig());
+
+            modelBuilder.Entity<Contact>().Property(c => c.TimeCreated).HasDefaultValueSql("GETDATE()");
             base.OnModelCreating(modelBuilder);
         }
 
