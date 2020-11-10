@@ -26,7 +26,7 @@ namespace MyBlog.Pages.Blogs
             _db.Blogs.Add(Blog);
             _db.SaveChanges();
 
-            return Redirect("/index");
+            return Redirect("index");
         }
     }
 }
