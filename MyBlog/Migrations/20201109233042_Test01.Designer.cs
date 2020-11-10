@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyBlog.Data;
 
 namespace MyBlog.Migrations
 {
     [DbContext(typeof(BlogDbContext))]
-    partial class BlogDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201109233042_Test01")]
+    partial class Test01
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,9 +106,7 @@ namespace MyBlog.Migrations
                         .UseIdentityColumn();
 
                     b.Property<byte>("Age")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("tinyint")
-                        .HasComputedColumnSql("DATEDIFF(year, [BirthDate],GETDATE())");
+                        .HasColumnType("tinyint");
 
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
@@ -122,6 +122,13 @@ namespace MyBlog.Migrations
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("Photo")
+                        .HasColumnType("varbinary(max)")
+                        .HasColumnName("Image");
+
+                    b.Property<byte[]>("PhotoThumb")
+                        .HasColumnType("binary(8000)");
 
                     b.Property<byte>("Role")
                         .HasColumnType("tinyint");

@@ -26,13 +26,6 @@ namespace MyBlog.Models
         public RoleType Role { get; set; }
 
         public DateTime BirthDate { get; set; }
-
-        public byte[] Photo { get; set; }
-
-
-        public byte[] PhotoThumb { get; set; }
-
-
     }
 
     public enum RoleType:byte
