@@ -16,12 +16,14 @@ namespace MyBlog.Pages.Blogs
         public DetailsModel(BlogDbContext db)
         {
             _db = db;
+            Blog = new();
+
         }
 
-        public Blog Blog { get; set; }
+        public Blog? Blog { get; set; }
         public void OnGet(int id)
         {
-            Blog=_db.Blogs.Find(id);
+            Blog=_db.Blogs.FirstOrDefault(b=>b.Id==id);
             
         }
     }
