@@ -12,8 +12,7 @@ namespace MyBlog.Data.Configs
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-builder.Property(u=>u.Age)
-        .HasComputedColumnSql("DATEDIFF(year, [BirthDate],GETDATE())");
+            builder.Property(u => u.UserName).IsRequired();
         }
     }
 }

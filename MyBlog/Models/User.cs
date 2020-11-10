@@ -11,6 +11,7 @@ namespace MyBlog.Models
     {
         public int Id { get; set; }
 
+        [Required]
         public string UserName { get; set; }
 
         public string LastName { get; set; }
@@ -18,7 +19,7 @@ namespace MyBlog.Models
 
         public byte Age { get; set; }
 
-        public bool IsLocked { get; set; }
+        public bool? IsLocked { get; set; }
 
         [Column(TypeName = "tinyint")]
         public GenderType Gender { get; set; }

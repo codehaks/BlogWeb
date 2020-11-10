@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyBlog.Data;
 
 namespace MyBlog.Migrations
 {
     [DbContext(typeof(BlogDbContext))]
-    partial class BlogDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201110080015_Userv01")]
+    partial class Userv01
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -99,7 +101,9 @@ namespace MyBlog.Migrations
                         .UseIdentityColumn();
 
                     b.Property<byte>("Age")
-                        .HasColumnType("tinyint");
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("tinyint")
+                        .HasComputedColumnSql("DATEDIFF(year, [BirthDate],GETDATE())");
 
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
@@ -110,7 +114,7 @@ namespace MyBlog.Migrations
                     b.Property<byte>("Gender")
                         .HasColumnType("tinyint");
 
-                    b.Property<bool?>("IsLocked")
+                    b.Property<bool>("IsLocked")
                         .HasColumnType("bit");
 
                     b.Property<string>("LastName")
