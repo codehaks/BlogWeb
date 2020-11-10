@@ -5,6 +5,15 @@
 
 <h1>Details</h1>
 
-<p>Name : @Model.Blog.Name</p>
-<p>Desc : @Model.Blog.Description</p>
+@if (Model.Blog is not null)
+{
+    <p>Name : @Model.Blog.Name</p>
+    <p>Desc : @Model.Blog.Description</p>
+}
+else
+{
+    <span>Not found!</span>
+}
+
+
 
