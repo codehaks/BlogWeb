@@ -15,6 +15,15 @@ namespace MyBlog.Data.Configs
             builder.Property(p => p.Rating).HasDefaultValue(3);
             builder.Property(p => p.TimeCreated).HasDefaultValueSql("GETDATE()");
 
+            builder.Ignore(p => p.DaysAgo);
+
+            builder.Property(p => p.SerialNo)
+                .ValueGeneratedOnAdd();
+
+            builder.Property(p => p.TimeInsert)
+                .HasDefaultValueSql("GETDATE()")
+                .ValueGeneratedOnAdd();
+
         }
     }
 }
