@@ -12,9 +12,6 @@ namespace MyBlog.Data.Configs
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.Property(u => u.PhotoThumb).HasColumnType("binary(8000)");
-            
-            builder.Property(u => u.Photo).HasColumnName("Image");
             
         }
     }

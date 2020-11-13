@@ -76,8 +76,8 @@ namespace MyBlog.Migrations
                     Gender = table.Column<byte>(type: "tinyint", nullable: false),
                     Role = table.Column<byte>(type: "tinyint", nullable: false),
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Image = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    PhotoThumb = table.Column<byte[]>(type: "binary(8000)", nullable: true)
+                    Photo = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    PhotoThumb = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
                 },
                 constraints: table =>
                 {

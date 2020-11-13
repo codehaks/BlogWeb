@@ -117,11 +117,10 @@ namespace MyBlog.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("Photo")
-                        .HasColumnType("varbinary(max)")
-                        .HasColumnName("Image");
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<byte[]>("PhotoThumb")
-                        .HasColumnType("binary(8000)");
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<byte>("Role")
                         .HasColumnType("tinyint");

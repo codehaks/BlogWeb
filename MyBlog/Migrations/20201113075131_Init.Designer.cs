@@ -10,7 +10,7 @@ using MyBlog.Data;
 namespace MyBlog.Migrations
 {
     [DbContext(typeof(BlogDbContext))]
-    [Migration("20201107085137_Init")]
+    [Migration("20201113075131_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -119,11 +119,10 @@ namespace MyBlog.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("Photo")
-                        .HasColumnType("varbinary(max)")
-                        .HasColumnName("Image");
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<byte[]>("PhotoThumb")
-                        .HasColumnType("binary(8000)");
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<byte>("Role")
                         .HasColumnType("tinyint");
