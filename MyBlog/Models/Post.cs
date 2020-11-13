@@ -11,10 +11,4 @@ namespace MyBlog.Models
         public int Rating { get; set; }
         public DateTime TimeCreated { get; set; }
     }
-    public class Comment
-    {
-        public int Id { get; set; }
-        public int Rating { get; set; }
-        public DateTime TimeCreated { get; set; }
-    }
 }
