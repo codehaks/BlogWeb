@@ -17,9 +17,6 @@ namespace MyBlog.Data.Configs
 
             builder.Ignore(p => p.DaysAgo);
 
-            builder.Property(p => p.SerialNo)
-                .ValueGeneratedOnAdd();
-
             builder.Property(p => p.TimeInsert)
                 .HasDefaultValueSql("GETDATE()")
                 .ValueGeneratedOnAdd();
