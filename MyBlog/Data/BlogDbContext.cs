@@ -14,22 +14,16 @@ namespace MyBlog.Data
             : base(options) { }
 
         public DbSet<Blog> Blogs { get; set; }
-
         public DbSet<Post> Posts { get; set; }
         public DbSet<Contact> Contacts { get; set; }
-
         public DbSet<Sub> Subs { get; set; }
-
-        public DbSet<User> Users { get; set; }
-        public DbSet<Comment> Comments { get; set; }
+        public DbSet<User> Users { get; set; }        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new SubConfig());
             modelBuilder.ApplyConfiguration(new UserConfig());
-
-            modelBuilder.Entity<Comment>().Property(c => c.TimeCreated).HasDefaultValueSql("GETDATE()");
-            modelBuilder.Entity<Comment>().Property(c => c.Rating).HasDefaultValue(5);
+            modelBuilder.ApplyConfiguration(new PostConfig());
 
             base.OnModelCreating(modelBuilder);
         }

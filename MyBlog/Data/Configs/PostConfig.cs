@@ -12,8 +12,7 @@ namespace MyBlog.Data.Configs
     {
         public void Configure(EntityTypeBuilder<Post> builder)
         {
-            builder.Property(p => p.Rating).HasDefaultValue(2);
-            builder.Property(p => p.TimeCreated).HasDefaultValueSql("GETDATE()");
+          
         }
     }
 }
