@@ -11,35 +11,9 @@ namespace MyBlog.Models
     {
         public int Id { get; set; }
 
-        [Required]
         public string UserName { get; set; }
+        public string Password { get; set; }
 
-        public string LastName { get; set; }
-        public string FirstName { get; set; }
-
-        public byte Age { get; set; }
-
-        public bool? IsLocked { get; set; }
-
-        [Column(TypeName = "tinyint")]
-        public GenderType Gender { get; set; }
-
-        public RoleType Role { get; set; }
-
-        public DateTime BirthDate { get; set; }
     }
 
-    public enum RoleType:byte
-    {
-        Member=0,
-        Admin=1,
-        Customer=2
-    }
-
-    public enum GenderType
-    {
-        None=0,
-        Male=1,
-        Female=2
-    }
 }

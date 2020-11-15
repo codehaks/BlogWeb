@@ -15,8 +15,6 @@ namespace MyBlog.Data
 
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Post> Posts { get; set; }
-        public DbSet<Contact> Contacts { get; set; }
-        public DbSet<Sub> Subs { get; set; }
         public DbSet<User> Users { get; set; }        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
