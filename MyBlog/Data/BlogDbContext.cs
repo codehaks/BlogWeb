@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MyBlog.Models;
 
 namespace MyBlog.Data
 {
@@ -9,7 +10,10 @@ namespace MyBlog.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.Entity<User>()
+                  .HasOne(u => u.Profile)
+                  .WithOne(p => p.User)
+                  .HasForeignKey<UserProfile>(p => p.UserId);
 
             base.OnModelCreating(modelBuilder);
         }
