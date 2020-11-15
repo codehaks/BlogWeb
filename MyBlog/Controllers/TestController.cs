@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyBlog.Data;
+using MyBlog.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace MyBlog.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class TestController : ControllerBase
     {
@@ -20,10 +20,13 @@ namespace MyBlog.Controllers
             _db = db;
         }
 
-        public IActionResult GetServerTime()
+        [Route("api/one")]
+        public IActionResult GetUserProfile()
         {
-            //var time=_db.Database.ExecuteSqlRaw
-            return Ok();
+            var user = _db.User
+                .Include(u=>u.Profile)
+                .ToList();
+            return Ok(user);
         }
     }
 }

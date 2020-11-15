@@ -6,7 +6,11 @@ namespace MyBlog.Data
     public class BlogDbContext : DbContext
     {
         public BlogDbContext(DbContextOptions<BlogDbContext> options)
-            : base(options) { }   
+            : base(options) { }
+
+        public DbSet<User> User { get; set; }
+
+        public DbSet<UserProfile> UserProfile { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

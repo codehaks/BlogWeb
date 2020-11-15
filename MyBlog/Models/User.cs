@@ -1,4 +1,6 @@
-﻿namespace MyBlog.Models
+﻿using System.Text.Json.Serialization;
+
+namespace MyBlog.Models
 {
     // One-to-one
 
@@ -17,6 +19,7 @@
         public string FullName { get; set; }
         public int Age { get; set; }
 
+        [JsonIgnore]
         public User User { get; set; }
         public int UserId { get; set; }
     }
