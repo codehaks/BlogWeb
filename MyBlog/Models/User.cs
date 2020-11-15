@@ -1,12 +1,22 @@
 ﻿namespace MyBlog.Models
 {
+    // One-to-one
+
     public class User
     {
         public int Id { get; set; }
-
         public string UserName { get; set; }
         public string Password { get; set; }
+    }
+
+    public class UserProfile
+    {
+        public int Id { get; set; }
+        public string FullName { get; set; }
+        public int Age { get; set; }
 
     }
+
+
 
 }
