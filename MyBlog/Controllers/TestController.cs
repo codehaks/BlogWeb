@@ -28,5 +28,13 @@ namespace MyBlog.Controllers
                 .ToList();
             return Ok(user);
         }
+        [Route("api/blog")]
+        public IActionResult GetBlogs()
+        {
+            var blogs = _db.Blogs
+                .Include(u => u.Posts)
+                .ToList();
+            return Ok(blogs);
+        }
     }
 }
