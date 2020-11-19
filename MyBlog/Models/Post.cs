@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyBlog.Models
@@ -12,6 +13,16 @@ namespace MyBlog.Models
         public DateTime TimeCreated { get; set; }
         public int BlogId { get; set; }
 
+        public List<Comment> Comments { get; set; }
+
         //public Blog Blog { get; set; }
+    }
+
+    public class Comment
+    {
+        public int Id { get; set; }
+        public string Body { get; set; }
+
+        public long PostId { get; set; }
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyBlog.Data;
 
 namespace MyBlog.Migrations
 {
     [DbContext(typeof(BlogDbContext))]
-    partial class BlogDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201119084323_NoComments")]
+    partial class NoComments
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,26 +37,6 @@ namespace MyBlog.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Blogs");
-                });
-
-            modelBuilder.Entity("MyBlog.Models.Comment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("Body")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long>("PostId")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PostId");
-
-                    b.ToTable("Comment");
                 });
 
             modelBuilder.Entity("MyBlog.Models.Post", b =>
@@ -125,15 +107,6 @@ namespace MyBlog.Migrations
                     b.ToTable("UserProfile");
                 });
 
-            modelBuilder.Entity("MyBlog.Models.Comment", b =>
-                {
-                    b.HasOne("MyBlog.Models.Post", null)
-                        .WithMany("Comments")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("MyBlog.Models.Post", b =>
                 {
                     b.HasOne("MyBlog.Models.Blog", null)
@@ -157,11 +130,6 @@ namespace MyBlog.Migrations
             modelBuilder.Entity("MyBlog.Models.Blog", b =>
                 {
                     b.Navigation("Posts");
-                });
-
-            modelBuilder.Entity("MyBlog.Models.Post", b =>
-                {
-                    b.Navigation("Comments");
                 });
 
             modelBuilder.Entity("MyBlog.Models.User", b =>

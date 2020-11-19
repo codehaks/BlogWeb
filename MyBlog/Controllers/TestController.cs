@@ -33,6 +33,7 @@ namespace MyBlog.Controllers
         {
             var blogs = _db.Blogs
                 .Include(u => u.Posts)
+                .ThenInclude(p=>p.Comments)
                 .ToList();
             return Ok(blogs);
         }
