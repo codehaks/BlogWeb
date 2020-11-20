@@ -24,6 +24,8 @@ namespace MyBlog.Models
     public class Tag
     {
         public string TagId { get; set; }
+
+        [JsonIgnore]
         public Collection<Post> Posts { get; set; }
     }
 
