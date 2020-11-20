@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace MyBlog.Models
 {
@@ -15,7 +16,7 @@ namespace MyBlog.Models
 
         public List<Comment> Comments { get; set; }
 
-        //public Blog Blog { get; set; }
+             public Blog Blog { get; set; }
     }
 
     public class Comment

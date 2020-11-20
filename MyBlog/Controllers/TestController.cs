@@ -37,5 +37,16 @@ namespace MyBlog.Controllers
                 .ToList();
             return Ok(blogs);
         }
+
+        [Route("api/post")]
+        public IActionResult GetPosts()
+        {
+            var posts = _db.Posts
+                .Include("Blog")
+                .Include(p=>p.Comments)
+               
+                .ToList();
+            return Ok(posts);
+        }
     }
 }

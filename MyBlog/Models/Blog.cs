@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Numerics;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace MyBlog.Models
@@ -15,6 +16,7 @@ namespace MyBlog.Models
         public string Name { get; set; }
         public string Description { get; set; }
 
+        [JsonIgnore]
         public Collection<Post> Posts { get; set; }
     }
 }
