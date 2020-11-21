@@ -23,9 +23,12 @@ namespace MyBlog.Models
     public class PostTagRelation
     {
         public long PostId { get; set; }
+        [JsonIgnore]
         public Post Post { get; set; }
 
         public string TagId { get; set; }
+
+        [JsonIgnore]
         public Tag Tag { get; set; }
 
         public DateTime TimeCreated { get; set; }      
