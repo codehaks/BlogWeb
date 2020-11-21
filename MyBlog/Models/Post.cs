@@ -13,7 +13,7 @@ namespace MyBlog.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime TimeCreated { get; set; }
-        public int BlogId { get; set; }
+        public int? BlogId { get; set; }
         public List<Comment> Comments { get; set; }
         public Blog Blog { get; set; }
 

@@ -17,6 +17,12 @@ namespace MyBlog.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //Casecade 
+            modelBuilder.Entity<Post>()
+                .HasOne(p => p.Blog)
+                .WithMany(b => b.Posts)
+                .OnDelete(DeleteBehavior.SetNull);
+
             modelBuilder.Entity<PostTagRelation>()
                 .HasKey(pt => new { pt.PostId, pt.TagId });
 
