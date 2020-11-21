@@ -17,6 +17,19 @@ namespace MyBlog.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<PostTagRelation>()
+                .HasKey(pt => new { pt.PostId, pt.TagId });
+
+            modelBuilder.Entity<PostTagRelation>()
+                .HasOne(pt => pt.Post)
+                .WithMany(p => p.PostTags)
+                .HasForeignKey(pt => pt.PostId);
+
+            modelBuilder.Entity<PostTagRelation>()
+                .HasOne(pt => pt.Tag)
+                .WithMany(t => t.PostTags)
+                .HasForeignKey(pt => pt.TagId);
+
 
 
             modelBuilder.Entity<User>()

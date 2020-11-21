@@ -43,7 +43,7 @@ namespace MyBlog.Controllers
         {
             var posts = _db.Posts
                 .Include("Blog")
-                .Include(p => p.Tags)
+                //.Include(p => p.Tags)
                 //.Include(p=>p.Comments)
                 .ToList();
             return Ok(posts);

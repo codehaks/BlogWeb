@@ -14,19 +14,27 @@ namespace MyBlog.Models
         public string Description { get; set; }
         public DateTime TimeCreated { get; set; }
         public int BlogId { get; set; }
-
         public List<Comment> Comments { get; set; }
-
         public Blog Blog { get; set; }
-        public Collection<Tag> Tags { get; set; }
+
+        public List<PostTagRelation> PostTags { get; set; }
+    }
+
+    public class PostTagRelation
+    {
+        public long PostId { get; set; }
+        public Post Post { get; set; }
+
+        public string TagId { get; set; }
+        public Tag Tag { get; set; }
+
+        public DateTime TimeCreated { get; set; }      
     }
 
     public class Tag
     {
         public string TagId { get; set; }
-
-        [JsonIgnore]
-        public Collection<Post> Posts { get; set; }
+        public List<PostTagRelation> PostTags { get; set; }
     }
 
     public class Comment
