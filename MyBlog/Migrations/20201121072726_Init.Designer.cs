@@ -10,8 +10,8 @@ using MyBlog.Data;
 namespace MyBlog.Migrations
 {
     [DbContext(typeof(BlogDbContext))]
-    [Migration("20201119085542_PostBlogRel")]
-    partial class PostBlogRel
+    [Migration("20201121072726_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -85,6 +85,16 @@ namespace MyBlog.Migrations
                     b.ToTable("Posts");
                 });
 
+            modelBuilder.Entity("MyBlog.Models.Tag", b =>
+                {
+                    b.Property<string>("TagId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("TagId");
+
+                    b.ToTable("Tags");
+                });
+
             modelBuilder.Entity("MyBlog.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -127,6 +137,21 @@ namespace MyBlog.Migrations
                     b.ToTable("UserProfile");
                 });
 
+            modelBuilder.Entity("PostTag", b =>
+                {
+                    b.Property<long>("PostsId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("TagsTagId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("PostsId", "TagsTagId");
+
+                    b.HasIndex("TagsTagId");
+
+                    b.ToTable("PostTag");
+                });
+
             modelBuilder.Entity("MyBlog.Models.Comment", b =>
                 {
                     b.HasOne("MyBlog.Models.Post", null)
@@ -156,6 +181,21 @@ namespace MyBlog.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("PostTag", b =>
+                {
+                    b.HasOne("MyBlog.Models.Post", null)
+                        .WithMany()
+                        .HasForeignKey("PostsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyBlog.Models.Tag", null)
+                        .WithMany()
+                        .HasForeignKey("TagsTagId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("MyBlog.Models.Blog", b =>
