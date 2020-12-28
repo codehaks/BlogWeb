@@ -21,9 +21,9 @@ namespace MyBlog.Pages.Blogs
         }
 
         public Blog? Blog { get; set; }
-        public void OnGet(int id)
+        public void OnGet(string id)
         {
-            Blog=_db.Blogs.FirstOrDefault(b=>b.Id==id);
+            Blog=_db.Blogs.FirstOrDefault(b=>b.Id==Guid.Parse(id));
             
         }
     }

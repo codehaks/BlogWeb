@@ -23,8 +23,7 @@ namespace MyBlog.Pages.Blogs
 
         public IActionResult OnPost()
         {
-            Blog.Id = DateTime.Now.Ticks;
-
+            Blog.Id = Guid.NewGuid();
 
             var b=_db.Blogs.Add(Blog);
 
