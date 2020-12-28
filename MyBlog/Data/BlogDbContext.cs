@@ -21,7 +21,8 @@ namespace MyBlog.Data
             modelBuilder.Entity<Post>()
                 .HasOne(p => p.Blog)
                 .WithMany(b => b.Posts)
-                .OnDelete(DeleteBehavior.SetNull);
+                .IsRequired(true)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<PostTagRelation>()
                 .HasKey(pt => new { pt.PostId, pt.TagId });
