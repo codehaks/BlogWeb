@@ -23,10 +23,16 @@ namespace MyBlog.Pages.Blogs
 
         public IActionResult OnPost()
         {
-            _db.Blogs.Add(Blog);
+            Blog.Id = DateTime.Now.Ticks;
+
+
+            var b=_db.Blogs.Add(Blog);
+
             _db.SaveChanges();
 
-            return Redirect("index");
+            var blogId = b.Entity.Id;
+
+            return RedirectToPage("./index");
         }
     }
 }
