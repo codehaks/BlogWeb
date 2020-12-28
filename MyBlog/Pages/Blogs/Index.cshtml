@@ -1,8 +1,9 @@
-﻿@page
+﻿@page "/"
 @model MyBlog.Pages.Blogs.IndexModel
 @{
+    ViewData["title"]="Blogs";
 }
-<a asp-page="create" class="btn btn-primary">Create</a>
+<a asp-page="create" class="btn btn-primary m-3">Create</a>
 <br />
 <table class="table">
     <thead>
