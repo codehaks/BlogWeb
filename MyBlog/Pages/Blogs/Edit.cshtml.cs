@@ -21,7 +21,7 @@ namespace MyBlog.Pages.Blogs
         [BindProperty]
         public Blog Blog { get; set; }
 
-        public void OnGet(Guid id)
+        public void OnGet(int id)
         {
             Blog = _db.Blogs.Find(id);
         }

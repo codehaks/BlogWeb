@@ -24,8 +24,7 @@ namespace MyBlog.Pages.Blogs
 
         public async Task< IActionResult >OnPost()
         {
-            Blog.TimeCreated = DateTime.Now.AddYears(-1);
-
+            
             var b=await _db.Blogs.AddAsync(Blog);
 
             var id = b.Entity.Id;
