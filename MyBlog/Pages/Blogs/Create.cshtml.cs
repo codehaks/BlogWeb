@@ -23,13 +23,14 @@ namespace MyBlog.Pages.Blogs
 
         public IActionResult OnPost()
         {
-            Blog.Id = Guid.NewGuid();
 
             var b=_db.Blogs.Add(Blog);
 
+            var blogId = b.Entity.Id;
+
             _db.SaveChanges();
 
-            var blogId = b.Entity.Id;
+            
 
             return RedirectToPage("./index");
         }
