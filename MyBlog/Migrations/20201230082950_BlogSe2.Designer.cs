@@ -9,8 +9,8 @@ using MyBlog.Data;
 namespace MyBlog.Migrations
 {
     [DbContext(typeof(BlogDbContext))]
-    [Migration("20201230081255_Init")]
-    partial class Init
+    [Migration("20201230082950_BlogSe2")]
+    partial class BlogSe2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,12 +20,16 @@ namespace MyBlog.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.1");
 
+            modelBuilder.HasSequence<int>("seq2")
+                .StartsAt(10L)
+                .IncrementsBy(1000);
+
             modelBuilder.Entity("MyBlog.Models.Blog", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .UseHiLo("seq2");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
