@@ -13,6 +13,18 @@ namespace MyBlog.Data
           : base(options) { }
 
         public DbSet<Blog> Blogs { get; set; }
-       
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.HasSequence<int>("my_seq").
+                StartsAt(1000)
+                .IncrementsBy(1);
+
+            modelBuilder.Entity<Blog>()
+                .Property(b => b.Id)
+                .UseHiLo("my_seq");
+
+        }
+
     }
 }
