@@ -12,6 +12,7 @@
             <th>Name</th>
             <th>Desc</th>
             <th>Time Created</th>
+            <th>Time Modified</th>
             <th></th>
         </tr>
     </thead>
@@ -23,6 +24,7 @@
             <td>@blog.Name</td>
             <td>@blog.Description</td>
             <td>@blog.TimeCreated</td>
+            <td>@blog.TimeModfied</td>
             <td>
                 <a asp-page="Details" asp-route-id="@blog.Id" class="btn btn-light">Details</a>
                 <a asp-page="Edit" asp-route-id="@blog.Id" class="btn btn-primary">Edit</a>

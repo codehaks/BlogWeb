@@ -28,6 +28,14 @@ namespace MyBlog.Data
                 }
             }
 
+            foreach (var entry in ChangeTracker
+               .Entries()
+               .Where(e => e.Entity is ITimeModified && e.State == EntityState.Modified)
+               .Select(e => e.Entity as ITimeModified))
+            {
+                entry.TimeModfied = DateTime.Now;
+            }
+
             return base.SaveChanges();
         }
 

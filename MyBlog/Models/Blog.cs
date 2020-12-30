@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyBlog.Models
 {
-    public class Blog:ITimeCreated
+    public class Blog:ITimeCreated,ITimeModified
     {
         
         public int Id { get; set; }
@@ -16,6 +16,13 @@ namespace MyBlog.Models
 
         public DateTime TimeCreated { get; set; }
 
+        public DateTime? TimeModfied { get; set; }
+
+    }
+
+    internal interface ITimeModified
+    {
+        DateTime? TimeModfied { get; set; }
     }
 
     public interface ITimeCreated
