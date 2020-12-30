@@ -16,6 +16,10 @@ namespace MyBlog.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Blog>()
+                .Property(b => b.TimeCreated)
+                .HasDefaultValueSql("GETDATE()");
+
             modelBuilder.HasSequence<int>("my_seq").
                 StartsAt(1000)
                 .IncrementsBy(1);
