@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace MyBlog.Data
 {
-    public class BlogDbContext:DbContext
+    public class BlogDbContext : DbContext
     {
         public BlogDbContext(DbContextOptions<BlogDbContext> options)
           : base(options) { }
 
         public DbSet<Blog> Blogs { get; set; }
+       
     }
 }
