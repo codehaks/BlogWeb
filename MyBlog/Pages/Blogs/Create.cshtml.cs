@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.CodeAnalysis.CSharp;
 using MyBlog.Data;
 using MyBlog.Models;
 
@@ -21,11 +22,13 @@ namespace MyBlog.Pages.Blogs
         [BindProperty]
         public Blog Blog { get; set; }
 
-        public IActionResult OnPost()
+        public async Task< IActionResult >OnPost()
         {
-            var b=_db.Blogs.Add(Blog);
+            var b=await _db.Blogs.AddAsync(Blog);
 
-            _db.SaveChanges();
+            var id = b.Entity.Id;
+
+            await _db.SaveChangesAsync();
 
             var blogId = b.Entity.Id;
 
