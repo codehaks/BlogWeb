@@ -16,6 +16,18 @@ namespace MyBlog.Pages.Blogs
         public EditModel(BlogDbContext db)
         {
             _db = db;
+            _db.SavingChanges += _db_SavingChanges;
+            _db.SavedChanges += _db_SavedChanges;
+        }
+
+        private void _db_SavedChanges(object sender, Microsoft.EntityFrameworkCore.SavedChangesEventArgs e)
+        {
+            Console.WriteLine("Data Saved -------------------");
+        }
+
+        private void _db_SavingChanges(object sender, Microsoft.EntityFrameworkCore.SavingChangesEventArgs e)
+        {
+            Console.WriteLine("Savin Data -------------------");
         }
 
         [BindProperty]

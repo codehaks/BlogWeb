@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using MyBlog.Models;
 using System;
 using System.Collections.Generic;
@@ -28,13 +29,6 @@ namespace MyBlog.Data
                 }
             }
 
-            foreach (var entry in ChangeTracker
-               .Entries()
-               .Where(e => e.Entity is ITimeModified && e.State == EntityState.Modified)
-               .Select(e => e.Entity as ITimeModified))
-            {
-                entry.TimeModfied = DateTime.Now;
-            }
 
             return base.SaveChanges();
         }
@@ -71,5 +65,23 @@ namespace MyBlog.Data
 
         }
 
+    }
+
+
+    public class MySaveInterceptor : SaveChangesInterceptor
+    {
+ 
+        public override InterceptionResult<int> SavingChanges(DbContextEventData eventData, InterceptionResult<int> result)
+        {
+            foreach (var entry in eventData.Context.ChangeTracker
+               .Entries()
+               .Where(e => e.Entity is ITimeModified && e.State == EntityState.Modified)
+               .Select(e => e.Entity as ITimeModified))
+            {
+                entry.TimeModfied = DateTime.Now;
+            }
+
+            return result;
+        }
     }
 }
