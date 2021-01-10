@@ -26,6 +26,18 @@ namespace MyBlog
         {
             services.AddDbContext<BlogDbContext>();
             services.AddRazorPages();
+            //services.AddControllersWithViews();
+
+            services.AddMiniProfiler(options =>
+            {
+
+                options.RouteBasePath = "/profiler";
+                options.EnableMvcFilterProfiling = true;
+
+            });//.AddEntityFramework();
+
+            services.AddMemoryCache();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,10 +60,12 @@ namespace MyBlog
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseMiniProfiler();
+           
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                //endpoints.MapControllers();
             });
         }
     }
