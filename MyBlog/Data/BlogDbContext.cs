@@ -12,6 +12,7 @@ namespace MyBlog.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data source=myblog.sqlite");
+            optionsBuilder.LogTo(Console.WriteLine);
             base.OnConfiguring(optionsBuilder);
         }
 
