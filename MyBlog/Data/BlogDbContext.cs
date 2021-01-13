@@ -16,6 +16,12 @@ namespace MyBlog.Data
             base.OnConfiguring(optionsBuilder);
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Blog>()
+                .HasQueryFilter(b => b.IsDeleted ==false);
+        }
+
         public DbSet<Blog> Blogs { get; set; }
     }
 }

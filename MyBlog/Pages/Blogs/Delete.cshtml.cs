@@ -29,8 +29,8 @@ namespace MyBlog.Pages.Blogs
         public IActionResult OnPost()
         {
             var blog = _db.Blogs.Find(Blog.Id);
-
-            _db.Blogs.Remove(blog);
+            blog.IsDeleted = true;
+            //_db.Blogs.Remove(blog);
 
             _db.SaveChanges();
 

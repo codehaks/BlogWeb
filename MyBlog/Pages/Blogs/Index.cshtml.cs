@@ -15,7 +15,10 @@ namespace MyBlog.Pages.Blogs
         public List<Blog> Blogs { get; set; }
         public void OnGet([FromServices] BlogDbContext db)
         {
-            Blogs = db.Blogs.TagWith("My Query starts here -----").TagWith("Test").ToList();
+            Blogs = db.Blogs
+                .TagWith("My Query starts here -----")
+                //.IgnoreQueryFilters()
+                .ToList();
         }
     }
 }
