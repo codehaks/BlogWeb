@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyBlog.Data
 {
-    public class BlogDbContext:DbContext
+    public class BlogDbContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -19,7 +19,10 @@ namespace MyBlog.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Blog>()
-                .HasQueryFilter(b => b.IsDeleted ==false);
+                .HasQueryFilter(b => b.IsDeleted == false);
+
+            modelBuilder.Entity<Blog>().Property("_Price");
+
         }
 
         public DbSet<Blog> Blogs { get; set; }
