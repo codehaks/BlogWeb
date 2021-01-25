@@ -21,6 +21,23 @@ namespace MyBlog.Models
             }
         }
 
+        public int Price
+        {
+            get { return _Price; }
+
+            set
+            {
+                if (_Price>1 && _Price<100)
+                {
+                    _Price = value;
+                }
+                else
+                {
+                    new ArgumentOutOfRangeException();
+                }
+               
+            }
+        }
 
 
         public bool IsDeleted { get; set; }

@@ -21,7 +21,7 @@ namespace MyBlog.Data
             modelBuilder.Entity<Blog>()
                 .HasQueryFilter(b => b.IsDeleted == false);
 
-            modelBuilder.Entity<Blog>().Property("_Price");
+            modelBuilder.Entity<Blog>().Property(b => b.Price).HasField("_Price");
 
         }
 
