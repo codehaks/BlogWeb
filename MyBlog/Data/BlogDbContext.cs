@@ -2,6 +2,7 @@
 using MyBlog.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,6 +15,5 @@ namespace MyBlog.Data
 
         public DbSet<Blog> Blogs { get; set; }
 
-        public DbSet<Post> Posts { get; set; }
     }
 }
